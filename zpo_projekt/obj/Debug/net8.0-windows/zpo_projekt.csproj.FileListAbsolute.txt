@@ -32,3 +32,4 @@ D:\studia_magisterka\semestr1\zaawansowane programowanie obiektowe\projekt\16626
 D:\studia_magisterka\semestr1\zaawansowane programowanie obiektowe\projekt\166269_projekt_zpo\zpo_projekt\bin\Debug\net8.0-windows\System.Diagnostics.DiagnosticSource.dll
 D:\studia_magisterka\semestr1\zaawansowane programowanie obiektowe\projekt\166269_projekt_zpo\zpo_projekt\obj\Debug\net8.0-windows\zpo_proj.D635E1B3.Up2Date
 D:\studia_magisterka\semestr1\zaawansowane programowanie obiektowe\projekt\166269_projekt_zpo\zpo_projekt\obj\Debug\net8.0-windows\zpo_projekt.Okno2.resources
+D:\studia_magisterka\semestr1\zaawansowane programowanie obiektowe\projekt\166269_projekt_zpo\zpo_projekt\obj\Debug\net8.0-windows\zpo_projekt.sourcelink.json

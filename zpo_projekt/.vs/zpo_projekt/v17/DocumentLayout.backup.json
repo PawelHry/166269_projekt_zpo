@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,27 +36,27 @@
               "RelativeDocumentMoniker": "Okno2.cs",
               "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno2.cs",
               "RelativeToolTip": "Okno2.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCYAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAmwCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T08:01:26.62Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Okno1.cs",
               "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs",
               "RelativeDocumentMoniker": "Okno1.cs",
               "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs",
               "RelativeToolTip": "Okno1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAiwFUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T07:54:35.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Okno1.cs [Design]",
               "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs",
               "RelativeDocumentMoniker": "Okno1.cs",

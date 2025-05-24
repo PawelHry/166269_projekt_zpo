@@ -1,4 +1,6 @@
-﻿namespace zpo_projekt
+﻿using System.Data;
+
+namespace zpo_projekt
 {
     public partial class Form1 : Form
     {
@@ -16,18 +18,22 @@
         {
             Okno2 noweOkno = new Okno2();
             noweOkno.ShowDialog();
+            WczytajKategorie();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            WczytajKategorie();
+        }
+
+        public void WczytajKategorie()
+        {
             using var conn = new NpgsqlConnection(DbConfig.ConnString);
             conn.Open();
-
             string sql = "SELECT id, nazwa FROM kategorie ORDER BY nazwa;";
             using var cmd = new NpgsqlCommand(sql, conn);
             using var reader = cmd.ExecuteReader();
-
-            var dt = new System.Data.DataTable();
+            var dt = new DataTable();
             dt.Load(reader);
 
             kategorieComboBox.DataSource = dt;
@@ -39,7 +45,7 @@
         {
             try
             {
-                using var conn = new NpgsqlConnection(ConnString);
+                using var conn = new NpgsqlConnection(DbConfig.ConnString);
                 conn.Open();
 
                 string sql = @"
@@ -52,7 +58,7 @@
                 cmd.Parameters.AddWithValue("catId", catId);
 
                 int rows = cmd.ExecuteNonQuery();
-                MessageBox.Show($"Dodano {rows} wydatek(ów) 🎉");
+                MessageBox.Show($"Dodano nowy wydatek");
             }
             catch (Exception ex)
             {
