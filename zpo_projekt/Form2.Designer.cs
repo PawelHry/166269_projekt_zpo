@@ -28,19 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
+            dodajKategorieTextBox = new TextBox();
+            btnDodajKategorie = new Button();
             SuspendLayout();
+            // 
+            // dodajKategorieTextBox
+            // 
+            dodajKategorieTextBox.Location = new Point(202, 104);
+            dodajKategorieTextBox.Name = "dodajKategorieTextBox";
+            dodajKategorieTextBox.Size = new Size(125, 27);
+            dodajKategorieTextBox.TabIndex = 0;
+            dodajKategorieTextBox.TextChanged += dodajKategorieTextBox_TextChanged;
+            // 
+            // btnDodajKategorie
+            // 
+            btnDodajKategorie.AutoSize = true;
+            btnDodajKategorie.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDodajKategorie.Location = new Point(368, 102);
+            btnDodajKategorie.Name = "btnDodajKategorie";
+            btnDodajKategorie.Size = new Size(125, 30);
+            btnDodajKategorie.TabIndex = 1;
+            btnDodajKategorie.Text = "dodaj kategorie";
+            btnDodajKategorie.UseVisualStyleBackColor = true;
+            btnDodajKategorie.Click += button1_Click;
             // 
             // Okno2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnDodajKategorie);
+            Controls.Add(dodajKategorieTextBox);
             Name = "Okno2";
             Text = "Okno2";
-            Load += Form2_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox dodajKategorieTextBox;
+        private Button btnDodajKategorie;
     }
 }

@@ -17,7 +17,14 @@ namespace zpo_projekt
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string nowaKategoria = dodajKategorieTextBox.Text.Trim();
+
+
+        }
+
+        private void dodajKategorieTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
