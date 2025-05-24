@@ -32,6 +32,8 @@
             btnDodaj = new Button();
             kategorieComboBox = new ComboBox();
             iloscTextBox = new TextBox();
+            dataGridViewWydatki = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewWydatki).BeginInit();
             SuspendLayout();
             // 
             // info
@@ -75,11 +77,23 @@
             iloscTextBox.TabIndex = 3;
             iloscTextBox.TextChanged += iloscTextBox_TextChanged;
             // 
+            // dataGridViewWydatki
+            // 
+            dataGridViewWydatki.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewWydatki.Dock = DockStyle.Bottom;
+            dataGridViewWydatki.Location = new Point(0, 63);
+            dataGridViewWydatki.Name = "dataGridViewWydatki";
+            dataGridViewWydatki.RowHeadersWidth = 51;
+            dataGridViewWydatki.Size = new Size(800, 387);
+            dataGridViewWydatki.TabIndex = 6;
+            dataGridViewWydatki.CellContentClick += this.dataGridView1_CellContentClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridViewWydatki);
             Controls.Add(btnDodaj);
             Controls.Add(kategorieComboBox);
             Controls.Add(iloscTextBox);
@@ -87,6 +101,7 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewWydatki).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -97,5 +112,6 @@
         private Button btnDodaj;
         private ComboBox kategorieComboBox;
         private TextBox iloscTextBox;
+        private DataGridView dataGridViewWydatki;
     }
 }
