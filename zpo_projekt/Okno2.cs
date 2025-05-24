@@ -35,8 +35,9 @@ namespace zpo_projekt
                 using var cmd = new NpgsqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("nazwa", nazwa);
 
-                int rows = cmd.ExecuteNonQuery();
-                MessageBox.Show($"Dodano {rows} kategori");
+                cmd.ExecuteNonQuery();
+                MessageBox.Show($"Dodano nowe kategorie");
+                this.Close();
         }
 
         private void dodajKategorieTextBox_TextChanged(object sender, EventArgs e)

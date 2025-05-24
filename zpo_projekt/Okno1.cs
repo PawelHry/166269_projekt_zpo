@@ -2,9 +2,6 @@
 {
     public partial class Form1 : Form
     {
-        private const string ConnString =
-         "Host=localhost;Port=5432;Database=zpo_projekt;Username=postgres;Password=admin";
-
         public Form1()
         {
             InitializeComponent();
@@ -23,7 +20,7 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using var conn = new NpgsqlConnection(ConnString);
+            using var conn = new NpgsqlConnection(DbConfig.ConnString);
             conn.Open();
 
             string sql = "SELECT id, nazwa FROM kategorie ORDER BY nazwa;";
