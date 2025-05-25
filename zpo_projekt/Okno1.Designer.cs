@@ -79,6 +79,7 @@
             // 
             // dataGridViewWydatki
             // 
+            dataGridViewWydatki.AllowUserToAddRows = false;
             dataGridViewWydatki.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewWydatki.Dock = DockStyle.Bottom;
             dataGridViewWydatki.Location = new Point(0, 63);
@@ -86,7 +87,7 @@
             dataGridViewWydatki.RowHeadersWidth = 51;
             dataGridViewWydatki.Size = new Size(800, 387);
             dataGridViewWydatki.TabIndex = 6;
-            dataGridViewWydatki.CellContentClick += this.dataGridView1_CellContentClick;
+            dataGridViewWydatki.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Form1
             // 

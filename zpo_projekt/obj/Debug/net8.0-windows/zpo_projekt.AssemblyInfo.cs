@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("zpo_projekt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3190724a59fb584de4845339a4b0dc3c45c6f2b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f97c45f10c2c783e8e58b9f74ef48bebeabe7f4d")]
 [assembly: System.Reflection.AssemblyProductAttribute("zpo_projekt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("zpo_projekt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
