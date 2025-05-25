@@ -1,132 +1,126 @@
-﻿using System.Data;
+﻿using System.ComponentModel;
+using System.Linq;
+using zpo_projekt;
 
 namespace zpo_projekt
 {
     public partial class Form1 : Form
     {
+        private readonly RepozytoriumKategoriiPg _katRepo = new();
+        private readonly RepozytoriumWydatkówPg _wydRepo = new();
+
+        private List<Kategoria> _kategorie = new();
+        private BindingList<Wydatek> _lista = new();
+
         public Form1()
         {
             InitializeComponent();
-            wczytajWydatki();
-        }
-
-        public void wczytajWydatki()
-        {
-            try
-            {
-                using var conn = new NpgsqlConnection(DbConfig.ConnString);
-                conn.Open();
-
-                string sql = @"
-            SELECT 
-                w.ilosc       AS Kwota,
-                k.nazwa       AS Kategoria,
-                w.data        AS ""Data dodania""
-            FROM wydatki w
-            JOIN kategorie k ON w.kategoria = k.id
-            ORDER BY w.data DESC;
-        ";
-
-                using var cmd = new NpgsqlCommand(sql, conn);
-                using var reader = cmd.ExecuteReader();
-                var dt = new DataTable();
-                dt.Load(reader);
-
-                dataGridViewWydatki.DataSource = dt;
-                dataGridViewWydatki.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Błąd przy ładowaniu wydatków: {ex.Message}");
-            }
-        }
-
-        private void fontDialog1_Apply(object sender, EventArgs e)
-        {
-
-        }
-
-        private void info_Click(object sender, EventArgs e)
-        {
-            Okno2 noweOkno = new Okno2();
-            noweOkno.ShowDialog();
             WczytajKategorie();
+            OdświeżSiatkę();
+            dataGridViewWydatki.CellContentClick += Grid_CellClick;
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void WczytajKategorie()
         {
-            WczytajKategorie();
+            _kategorie = _katRepo.PobierzWszystkie().ToList();
+            kategorieComboBox.DataSource = _kategorie;
+            kategorieComboBox.DisplayMember = "Nazwa";
+            kategorieComboBox.ValueMember = "Id";
         }
-
-        public void WczytajKategorie()
+        private void OdświeżSiatkę()
         {
-            using var conn = new NpgsqlConnection(DbConfig.ConnString);
-            conn.Open();
-            string sql = "SELECT id, nazwa FROM kategorie ORDER BY nazwa;";
-            using var cmd = new NpgsqlCommand(sql, conn);
-            using var reader = cmd.ExecuteReader();
-            var dt = new DataTable();
-            dt.Load(reader);
+            _lista = new BindingList<Wydatek>(_wydRepo.PobierzWszystkie().ToList());
+            dataGridViewWydatki.DataSource = _lista;
 
-            kategorieComboBox.DataSource = dt;
-            kategorieComboBox.DisplayMember = "nazwa";
-            kategorieComboBox.ValueMember = "id";
-        }
-
-        private void AddDataToWydatki(int amount, int catId)
-        {
-            try
+            if (!dataGridViewWydatki.Columns.Contains("Usuń"))
             {
-                using var conn = new NpgsqlConnection(DbConfig.ConnString);
-                conn.Open();
-
-                string sql = @"
-                    INSERT INTO wydatki (ilosc, kategoria, data)
-                    VALUES (@amount, @catId, NOW());
-                ";
-
-                using var cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("amount", amount);
-                cmd.Parameters.AddWithValue("catId", catId);
-
-                int rows = cmd.ExecuteNonQuery();
-                wczytajWydatki();
-                MessageBox.Show($"Dodano nowy wydatek");
+                dataGridViewWydatki.Columns["Id"].Visible = false;
+                var btn = new DataGridViewButtonColumn
+                {
+                    Name = "Usuń",
+                    Text = "Usuń",
+                    UseColumnTextForButtonValue = true
+                };
+                dataGridViewWydatki.Columns.Add(btn);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Błąd przy dodawaniu do bazy: {ex.Message}");
-            }
-        }
-
-
-        private void kategorieComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(iloscTextBox.Text, out int kwota))
+            decimal kwota = kwotaNumeric.Value;
+
+            if (kwota <= 0)
             {
-                MessageBox.Show("Podaj poprawną liczbę w polu Kwota!");
+                MessageBox.Show("Kwota musi być większa od zera!");
                 return;
             }
 
-            if (kategorieComboBox.SelectedValue == null)
+            if (kategorieComboBox.SelectedItem is not Kategoria kat)
             {
                 MessageBox.Show("Wybierz kategorię!");
                 return;
             }
-            int kategoria = (int)kategorieComboBox.SelectedValue;
 
-            AddDataToWydatki(kwota, kategoria);
+            _wydRepo.Dodaj(new Wydatek
+            {
+                Kwota = kwota,
+                Data = DateTime.Now,
+                KategoriaId = kat.Id,
+                Kategoria = kat
+            });
+
+            kwotaNumeric.Value = 0;
+            OdświeżSiatkę();
         }
 
-        private void iloscTextBox_TextChanged(object sender, EventArgs e)
+        private void Grid_CellClick(object? s, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            if (dataGridViewWydatki.Columns[e.ColumnIndex].Name != "Usuń") return;
+            if (e.RowIndex >= _lista.Count) return;
+
+            var wydatek = _lista[e.RowIndex];
+
+            if (MessageBox.Show($"Usunąć wydatek «{wydatek}»?",
+                                "Potwierdź",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning) != DialogResult.Yes)
+                return;
+
+            dataGridViewWydatki.CellContentClick -= Grid_CellClick;
+            try
+            {
+                _wydRepo.Usuń(wydatek.Id);
+                _lista.RemoveAt(e.RowIndex);
+                dataGridViewWydatki.CurrentCell = null;
+            }
+            finally
+            {
+                dataGridViewWydatki.CellContentClick += Grid_CellClick;
+            }
+        }
+
+        private void btnFiltruj_Click(object sender, EventArgs e)
+        {
+            if (kategorieComboBox.SelectedItem is not Kategoria kat) return;
+            var filtr = _lista.Where(x => x.KategoriaId == kat.Id).ToList();
+            dataGridViewWydatki.DataSource = new BindingList<Wydatek>(filtr);
+        }
+
+        private void btnKategorie_Click(object? s, EventArgs e)
+        {
+            using var okno = new Okno2();
+            okno.KategorieZmienione += (_, __) =>
+            {
+                WczytajKategorie();
+                OdświeżSiatkę();
+            };
+            okno.ShowDialog(this);
+            WczytajKategorie();
+        }
+
+        private void btnWszystkie_Click(object sender, EventArgs e) => OdświeżSiatkę();
+
+        private void iloscTextBox_ValueChanged(object sender, EventArgs e)
         {
 
         }

@@ -31,9 +31,10 @@
             info = new Button();
             btnDodaj = new Button();
             kategorieComboBox = new ComboBox();
-            iloscTextBox = new TextBox();
             dataGridViewWydatki = new DataGridView();
+            kwotaNumeric = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridViewWydatki).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kwotaNumeric).BeginInit();
             SuspendLayout();
             // 
             // info
@@ -48,7 +49,7 @@
             info.Text = "dodaj kategorie";
             info.UseVisualStyleBackColor = true;
             info.UseWaitCursor = true;
-            info.Click += info_Click;
+            info.Click += btnKategorie_Click;
             // 
             // btnDodaj
             // 
@@ -67,15 +68,6 @@
             kategorieComboBox.Name = "kategorieComboBox";
             kategorieComboBox.Size = new Size(151, 28);
             kategorieComboBox.TabIndex = 4;
-            kategorieComboBox.SelectedIndexChanged += kategorieComboBox_SelectedIndexChanged;
-            // 
-            // iloscTextBox
-            // 
-            iloscTextBox.Location = new Point(160, 12);
-            iloscTextBox.Name = "iloscTextBox";
-            iloscTextBox.Size = new Size(125, 27);
-            iloscTextBox.TabIndex = 3;
-            iloscTextBox.TextChanged += iloscTextBox_TextChanged;
             // 
             // dataGridViewWydatki
             // 
@@ -87,22 +79,32 @@
             dataGridViewWydatki.RowHeadersWidth = 51;
             dataGridViewWydatki.Size = new Size(800, 387);
             dataGridViewWydatki.TabIndex = 6;
-            dataGridViewWydatki.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewWydatki.CellContentClick += Grid_CellClick;
+            // 
+            // kwotaNumeric
+            // 
+            kwotaNumeric.DecimalPlaces = 2;
+            kwotaNumeric.Location = new Point(135, 11);
+            kwotaNumeric.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            kwotaNumeric.Name = "kwotaNumeric";
+            kwotaNumeric.Size = new Size(150, 27);
+            kwotaNumeric.TabIndex = 7;
+            kwotaNumeric.ValueChanged += iloscTextBox_ValueChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(kwotaNumeric);
             Controls.Add(dataGridViewWydatki);
             Controls.Add(btnDodaj);
             Controls.Add(kategorieComboBox);
-            Controls.Add(iloscTextBox);
             Controls.Add(info);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewWydatki).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kwotaNumeric).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -112,7 +114,7 @@
         private Button info;
         private Button btnDodaj;
         private ComboBox kategorieComboBox;
-        private TextBox iloscTextBox;
         private DataGridView dataGridViewWydatki;
+        private NumericUpDown kwotaNumeric;
     }
 }

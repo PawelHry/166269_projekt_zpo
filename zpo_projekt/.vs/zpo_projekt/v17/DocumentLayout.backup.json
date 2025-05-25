@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\okno2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\okno2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:okno1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\configsingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:configsingleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|d:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\modele.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DD5E725-26DD-46A7-B714-5098981F2612}|zpo_projekt.csproj|solutionrelative:modele.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +39,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Okno1.cs",
-              "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs",
-              "RelativeDocumentMoniker": "Okno1.cs",
-              "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs",
-              "RelativeToolTip": "Okno1.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Title": "Okno2.cs",
+              "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno2.cs",
+              "RelativeDocumentMoniker": "Okno2.cs",
+              "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno2.cs",
+              "RelativeToolTip": "Okno2.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T10:52:38.444Z",
+              "WhenOpened": "2025-05-25T13:27:21.477Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Okno1.cs [Design]",
+              "Title": "Okno2.cs [Design]",
+              "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno2.cs",
+              "RelativeDocumentMoniker": "Okno2.cs",
+              "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno2.cs [Design]",
+              "RelativeToolTip": "Okno2.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T13:27:20.318Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Okno1.cs",
               "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs",
               "RelativeDocumentMoniker": "Okno1.cs",
-              "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs [Design]",
-              "RelativeToolTip": "Okno1.cs [Design]",
+              "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Okno1.cs",
+              "RelativeToolTip": "Okno1.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAASwIIAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T07:54:05.344Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-25T13:26:07.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConfigSingleton.cs",
+              "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\ConfigSingleton.cs",
+              "RelativeDocumentMoniker": "ConfigSingleton.cs",
+              "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\ConfigSingleton.cs",
+              "RelativeToolTip": "ConfigSingleton.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T10:51:21.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Modele.cs",
+              "DocumentMoniker": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Modele.cs",
+              "RelativeDocumentMoniker": "Modele.cs",
+              "ToolTip": "D:\\studia_magisterka\\semestr1\\zaawansowane programowanie obiektowe\\projekt\\166269_projekt_zpo\\zpo_projekt\\Modele.cs",
+              "RelativeToolTip": "Modele.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwAQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T10:48:18.959Z"
             }
           ]
         }

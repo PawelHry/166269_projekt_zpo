@@ -40,7 +40,6 @@
             dodajKategorieTextBox.Name = "dodajKategorieTextBox";
             dodajKategorieTextBox.Size = new Size(125, 27);
             dodajKategorieTextBox.TabIndex = 0;
-            dodajKategorieTextBox.TextChanged += dodajKategorieTextBox_TextChanged;
             // 
             // btnDodajKategorie
             // 
@@ -52,7 +51,7 @@
             btnDodajKategorie.TabIndex = 1;
             btnDodajKategorie.Text = "dodaj kategorie";
             btnDodajKategorie.UseVisualStyleBackColor = true;
-            btnDodajKategorie.Click += button1_Click;
+            btnDodajKategorie.Click += btnDodaj_Click;
             // 
             // dataGridViewKategorie
             // 
@@ -65,7 +64,7 @@
             dataGridViewKategorie.RowHeadersWidth = 51;
             dataGridViewKategorie.Size = new Size(800, 353);
             dataGridViewKategorie.TabIndex = 2;
-            dataGridViewKategorie.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewKategorie.CellContentClick += Grid_CellClick;
             // 
             // Okno2
             // 
@@ -77,7 +76,6 @@
             Controls.Add(dodajKategorieTextBox);
             Name = "Okno2";
             Text = "Okno2";
-            Load += Okno2_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewKategorie).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -1,85 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
+using zpo_projekt;
 
 namespace zpo_projekt
 {
     public partial class Okno2 : Form
     {
+        private readonly RepozytoriumKategoriiPg _repo = new();
+        private BindingList<Kategoria> _lista = new();
+        public event EventHandler? KategorieZmienione;
+        private void PodnieśZdarzenie() =>
+            KategorieZmienione?.Invoke(this, EventArgs.Empty);
+
+        private bool _kasujemy = false;
+
         public Okno2()
         {
             InitializeComponent();
+            Load += (_, _) => Załaduj();
+            dataGridViewKategorie.CellContentClick += Grid_CellClick;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDodaj_Click(object sender, EventArgs e)
         {
-            string nowaKategoria = dodajKategorieTextBox.Text.Trim();
-            dodajKategorie(nowaKategoria);
+            string nazwa = dodajKategorieTextBox.Text.Trim();
+            if (nazwa.Length == 0) return;
+
+            var nowa = _repo.Dodaj(new Kategoria { Nazwa = nazwa });
+            dodajKategorieTextBox.Clear();
+
+            _lista.Add(nowa);
+            PodnieśZdarzenie();
         }
 
-        private void dodajKategorie(string nazwa)
+        private void Załaduj()
         {
-            using var conn = new NpgsqlConnection(DbConfig.ConnString);
-            conn.Open();
+            _lista = new BindingList<Kategoria>(_repo.PobierzWszystkie().ToList());
+            dataGridViewKategorie.DataSource = _lista;
 
-            string sql = @"
-                    INSERT INTO kategorie (nazwa)
-                    VALUES (@nazwa);
-                ";
-            using var cmd = new NpgsqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("nazwa", nazwa);
-
-            cmd.ExecuteNonQuery();
-            MessageBox.Show($"Dodano nowe kategorie");
-            this.Close();
+            if (!dataGridViewKategorie.Columns.Contains("Usuń"))
+            {
+                dataGridViewKategorie.Columns["Id"].Visible = false;
+                dataGridViewKategorie.Columns.Add(new DataGridViewButtonColumn
+                {
+                    Name = "Usuń",
+                    Text = "Usuń",
+                    UseColumnTextForButtonValue = true
+                });
+            }
         }
 
-        private void dodajKategorieTextBox_TextChanged(object sender, EventArgs e)
+        private void Grid_CellClick(object? s, DataGridViewCellEventArgs e)
         {
+            if (_kasujemy) return;
+            if (e.RowIndex < 0) return;
+            if (dataGridViewKategorie.Columns[e.ColumnIndex].Name != "Usuń") return;
+            if (e.RowIndex >= _lista.Count) return;
 
-        }
+            var kat = _lista[e.RowIndex];
 
-        private void Okno2_Load(object sender, EventArgs e)
-        {
-            WczytajKategorie();
-        }
+            if (MessageBox.Show(
+                    $"Usunąć kategorię «{kat.Nazwa}»?\n(Znikną jej wydatki)",
+                    "Potwierdź",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning) != DialogResult.Yes)
+                return;
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void WczytajKategorie()
-        {
+            _kasujemy = true;
             try
             {
-                using var conn = new NpgsqlConnection(DbConfig.ConnString);
-                conn.Open();
-
-                string sql = @"
-            SELECT id, nazwa
-            FROM kategorie
-            ORDER BY nazwa;
-        ";
-
-                using var cmd = new NpgsqlCommand(sql, conn);
-                using var reader = cmd.ExecuteReader();
-                var dt = new DataTable();
-                dt.Load(reader);
-
-                dataGridViewKategorie.DataSource = dt;
-                dataGridViewKategorie.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                _repo.Usuń(kat.Id);
+                _lista.RemoveAt(e.RowIndex);
+                dataGridViewKategorie.CurrentCell = null;
+                PodnieśZdarzenie();
             }
-            catch (Exception ex)
+            finally
             {
-                MessageBox.Show($"Błąd przy ładowaniu kategorii: {ex.Message}");
+                BeginInvoke(() => _kasujemy = false);
             }
         }
-
     }
 }
