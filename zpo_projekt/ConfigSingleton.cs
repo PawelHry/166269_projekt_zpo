@@ -1,28 +1,36 @@
 ﻿using System.Text.Json;
 
-namespace zpo_projekt;
-public sealed class Konfiguracja
+namespace zpo_projekt
 {
-    private static readonly Lazy<Konfiguracja> _instancja =
-        new(() => Wczytaj("config.json"));
-
-    public static Konfiguracja Instancja => _instancja.Value;
-
-    public string CiągPołączenia { get; init; } = string.Empty;
-
-    private Konfiguracja() { }
-
-    private static Konfiguracja Wczytaj(string plik)
+    /// <summary>
+    ///  Singleton zwracający ciąg połączenia do bazy.
+    ///  Odczyt z pliku config.json (kopiowany do katalogu wyjściowego).
+    /// </summary>
+    public sealed class Konfiguracja
     {
-        var json = File.ReadAllText(plik);
-        var root = JsonSerializer.Deserialize<JsonElement>(json);
+        private static readonly Lazy<Konfiguracja> _instancja =
+            new(() => Wczytaj("config.json"));
 
-        return new Konfiguracja
+        public static Konfiguracja Instancja => _instancja.Value;
+
+        public string CiagPolaczenia { get; init; } = string.Empty;
+
+        private Konfiguracja() { }
+
+        /* ---------- prywatne ---------- */
+        private static Konfiguracja Wczytaj(string nazwaPliku)
         {
-            CiągPołączenia = root
-                .GetProperty("Polaczenie")
-                .GetProperty("Postgres")
-                .GetString()!
-        };
+            string sciezka = Path.Combine(AppContext.BaseDirectory, nazwaPliku);
+            var json = File.ReadAllText(sciezka);
+            var root = JsonSerializer.Deserialize<JsonElement>(json);
+
+            return new Konfiguracja
+            {
+                CiagPolaczenia = root
+                    .GetProperty("Polaczenie")
+                    .GetProperty("Postgres")
+                    .GetString()!
+            };
+        }
     }
 }

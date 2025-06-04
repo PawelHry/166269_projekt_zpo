@@ -4,7 +4,7 @@ namespace zpo_projekt
 {
     public class RepozytoriumKategoriiPg : IRepozytorium<Kategoria>
     {
-        private readonly string _conn = Konfiguracja.Instancja.CiągPołączenia;
+        private readonly string _conn = Konfiguracja.Instancja.CiagPolaczenia;
 
         public Kategoria Dodaj(Kategoria kat)
         {
@@ -37,7 +37,7 @@ namespace zpo_projekt
             }
         }
 
-        public void Usuń(int id)
+        public void Usun(int id)
         {
             const string sql = "DELETE FROM kategorie WHERE id = @id;";
             using var conn = new NpgsqlConnection(_conn);
@@ -48,9 +48,10 @@ namespace zpo_projekt
             cmd.ExecuteNonQuery();
         }
     }
-    public class RepozytoriumWydatkówPg : IRepozytorium<Wydatek>
+
+    public class RepozytoriumWydatkowPg : IRepozytorium<Wydatek>
     {
-        private readonly string _conn = Konfiguracja.Instancja.CiągPołączenia;
+        private readonly string _conn = Konfiguracja.Instancja.CiagPolaczenia;
 
         public Wydatek Dodaj(Wydatek w)
         {
@@ -102,7 +103,7 @@ namespace zpo_projekt
             }
         }
 
-        public void Usuń(int id)
+        public void Usun(int id)
         {
             const string sql = "DELETE FROM wydatki WHERE id = @id;";
             using var conn = new NpgsqlConnection(_conn);

@@ -7,8 +7,9 @@ namespace zpo_projekt
     {
         private readonly RepozytoriumKategoriiPg _repo = new();
         private BindingList<Kategoria> _lista = new();
+
         public event EventHandler? KategorieZmienione;
-        private void PodnieśZdarzenie() =>
+        private void PodniesZdarzenie() =>
             KategorieZmienione?.Invoke(this, EventArgs.Empty);
 
         private bool _kasujemy = false;
@@ -16,7 +17,7 @@ namespace zpo_projekt
         public Okno2()
         {
             InitializeComponent();
-            Load += (_, _) => Załaduj();
+            Load += (_, _) => Zaladuj();
             dataGridViewKategorie.CellContentClick += Grid_CellClick;
         }
 
@@ -29,21 +30,21 @@ namespace zpo_projekt
             dodajKategorieTextBox.Clear();
 
             _lista.Add(nowa);
-            PodnieśZdarzenie();
+            PodniesZdarzenie();
         }
 
-        private void Załaduj()
+        private void Zaladuj()
         {
             _lista = new BindingList<Kategoria>(_repo.PobierzWszystkie().ToList());
             dataGridViewKategorie.DataSource = _lista;
 
-            if (!dataGridViewKategorie.Columns.Contains("Usuń"))
+            if (!dataGridViewKategorie.Columns.Contains("Usun"))
             {
                 dataGridViewKategorie.Columns["Id"].Visible = false;
                 dataGridViewKategorie.Columns.Add(new DataGridViewButtonColumn
                 {
-                    Name = "Usuń",
-                    Text = "Usuń",
+                    Name = "Usun",
+                    Text = "Usun",
                     UseColumnTextForButtonValue = true
                 });
             }
@@ -53,14 +54,14 @@ namespace zpo_projekt
         {
             if (_kasujemy) return;
             if (e.RowIndex < 0) return;
-            if (dataGridViewKategorie.Columns[e.ColumnIndex].Name != "Usuń") return;
+            if (dataGridViewKategorie.Columns[e.ColumnIndex].Name != "Usun") return;
             if (e.RowIndex >= _lista.Count) return;
 
             var kat = _lista[e.RowIndex];
 
             if (MessageBox.Show(
                     $"Usunąć kategorię «{kat.Nazwa}»?\n(Znikną jej wydatki)",
-                    "Potwierdź",
+                    "Potwierdz",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning) != DialogResult.Yes)
                 return;
@@ -68,10 +69,10 @@ namespace zpo_projekt
             _kasujemy = true;
             try
             {
-                _repo.Usuń(kat.Id);
+                _repo.Usun(kat.Id);
                 _lista.RemoveAt(e.RowIndex);
                 dataGridViewKategorie.CurrentCell = null;
-                PodnieśZdarzenie();
+                PodniesZdarzenie();
             }
             finally
             {
